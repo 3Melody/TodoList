@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+
+<div class="overflow-x-auto ">
+  <div class="home mx-20 flex justify-between gap-6 mt-6 ">
+
+    <div class="w-1/2 ">
+
+      <div class="Todo mb-3 ">
+        <h1 class=" flex justify-center bg-primary text-black font-bold p-3 rounded-md ">Todo</h1>
+      </div>
+      <!-- Open the modal using ID.showModal() method -->
+  
+      <div class="card bg-neutral   shadow-xl mt-3" *ngFor="let task of tasks">
+
+        <div class="card-body">
+          <h2 class="card-title w-1/2 ">{{task.title}}</h2>
+          <div class="card-actions justify-end">
+            
+            <button class="btn btn-accent" (click)="completeTask(task.id,task.title)">Make Done</button>
+            <button class="btn btn-primary" onclick="my_modal_6.showModal() " (click)="editTask(task.id)">Edit</button>
+            <button (click)="deleteTask(task.id)" class="btn btn-error">Delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end"> <button class="btn btn-success mt-5 text-white font-bold" onclick="my_modal_5.showModal()">+ Add Task</button></div>
+      <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <h3 class="text-lg font-bold">Add Tasks</h3>
+          <label class="input input-bordered flex items-center gap-2 mt-3">
+            Name
+            <input type="text" class="grow " placeholder="HomeWork" [(ngModel)]="newTaskTitle" />
+          </label>
+        
+          <div class="modal-action">
+            <button class="btn btn-primary" (click)="addTask()">Add</button>
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+      <dialog id="my_modal_6" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <h3 class="text-lg font-bold">Edit Tasks</h3>
+          <label class="input input-bordered flex items-center gap-2 mt-3">
+            Name
+            <input type="text" class="grow " placeholder="HomeWork" [(ngModel)]="newTaskTitle" />
+          </label>
+        
+          <div class="modal-action">
+            <button class="btn btn-primary" (click)="updateTask()" >Edit</button>
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </div>
+    
+
+    <div class="w-1/2 ">
+      <div class="Done ">
+        <h1 class=" flex justify-center bg-primary text-black font-bold p-3 rounded-md w-full">Done</h1>
+      </div>
+      <div class="card bg-neutral  shadow-xl mt-3 " *ngFor="let taskDone of completedTasks">
+
+        <div class="card-body">
+          <h2 class="card-title">{{taskDone.title}}</h2>
+  
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary" (click)="todoTask(taskDone.id,taskDone.title)">Make Todo</button>
+            <button class="btn btn-error" (click)="deleteTask(taskDone.id)" >Delete</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
