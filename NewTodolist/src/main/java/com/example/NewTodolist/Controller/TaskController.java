@@ -42,6 +42,7 @@ public class TaskController {
     @PutMapping("/{id}")
     public Task updateTask(@PathVariable int id, @RequestBody Task task) {
         task.setId(id);  // กำหนด ID ให้กับ task ก่อนการอัพเดท
+
         return taskService.updateTask(task);
     }
 
@@ -49,5 +50,6 @@ public class TaskController {
     public void deleteTask(@PathVariable int id) {
         taskService.deleteTask(id);
     }
+
 }
 
