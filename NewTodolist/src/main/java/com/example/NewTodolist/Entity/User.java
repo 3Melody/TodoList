@@ -1,9 +1,11 @@
 package com.example.NewTodolist.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 @Entity
 public class User {
@@ -12,6 +14,10 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String username;
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Task> tasks = new ArrayList<>();
+
 
   public Long getId() {
     return id;
