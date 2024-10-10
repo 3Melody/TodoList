@@ -1,14 +1,11 @@
 package com.example.NewTodolist.Controller;
 
 import com.example.NewTodolist.Entity.Task;
-import com.example.NewTodolist.Repository.TaskRepository;
 import com.example.NewTodolist.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication;
-
 
 
 import java.util.List;
@@ -26,16 +23,6 @@ public class TaskController {
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
     }
-
-  @Autowired
-  private TaskRepository taskRepository;
-
-  @GetMapping("/my-tasks")
-  public List<Task> getMyTasks(Authentication authentication) {
-    // ตรวจสอบว่า Authentication ไม่เป็น null และดึง username
-    String username = authentication.getName();
-    return taskRepository.findByUserUsername(username);
-  }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getTaskById(@PathVariable int id) {

@@ -15,10 +15,6 @@ public class Task {
     @Column(name = "completed")
     private boolean completed;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
-  private User user;
-
     // Constructor, Getter และ Setter
     public Task() {
     }
