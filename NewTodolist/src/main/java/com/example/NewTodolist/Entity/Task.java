@@ -1,22 +1,21 @@
 package com.example.NewTodolist.Entity;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "task")
 public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+    @Column(name = "title", nullable = false)  // ใส่ nullable = false เพื่อให้ title ต้องไม่เป็นค่าว่าง
+    private String title;
 
-  @Column(name = "title", nullable = false)
-  private String title;
+    @Column(name = "completed")
+    private boolean completed;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   @Column(name = "completed")
   private boolean completed;
@@ -29,49 +28,38 @@ public class Task {
     public Task() {
     }
 >>>>>>> parent of 89ea2c2 (Revert "add login pages")
+=======
+    // Constructor, Getter และ Setter
+    public Task() {
+    }
+>>>>>>> parent of 775ae1b (DTO Task)
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
-  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})  // ป้องกันการโหลดแบบ Lazy
-  private User user;
+    public Task(String title, boolean completed) {
+        this.title = title;
+        this.completed = completed;
+    }
 
-  // Constructor, Getter และ Setter
-  public Task() {}
+    public int getId() {
+        return id;
+    }
 
-  public Task(String title, boolean completed) {
-    this.title = title;
-    this.completed = completed;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  public int getId() {
-    return id;
-  }
+    public String getTitle() {
+        return title;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-  public String getTitle() {
-    return title;
-  }
+    public boolean isCompleted() {
+        return completed;
+    }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public boolean isCompleted() {
-    return completed;
-  }
-
-  public void setCompleted(boolean completed) {
-    this.completed = completed;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
 }
