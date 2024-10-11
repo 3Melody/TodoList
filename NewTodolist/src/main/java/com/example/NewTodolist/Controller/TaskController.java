@@ -29,7 +29,7 @@ public class TaskController {
     return taskService.getAllTasks();  // ส่ง TaskDTO กลับไป
   }
 
-<<<<<<< HEAD
+
   @GetMapping("/user/{userId}")
   public List<TaskDTO> getTasksByUserId(@PathVariable Long userId) {
     return taskService.getTasksByUserId(userId);
@@ -41,7 +41,7 @@ public class TaskController {
     Long userId = Long.valueOf(username);  // สมมติว่า username เป็น userId
     return taskService.getTasksByUserId(userId);
   }
-=======
+
   @Autowired
   private TaskRepository taskRepository;
 
@@ -53,7 +53,7 @@ public class TaskController {
   }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getTaskById(@PathVariable int id) {
+    public ResponseEntity<Task> getTaskById(@PathVariable int id) {
         Optional<Task> task = taskService.getTaskById(id);
         if (task.isPresent()) {
             return ResponseEntity.ok(task.get());
@@ -61,10 +61,10 @@ public class TaskController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task not found");
         }
     }
->>>>>>> parent of 89ea2c2 (Revert "add login pages")
+
 
   @GetMapping("/{id}")
-  public ResponseEntity<?> getTaskById(@PathVariable int id) {
+  public ResponseEntity<Task> getTaskById(@PathVariable int id) {
     Optional<Task> task = taskService.getTaskById(id);
     if (task.isPresent()) {
       return ResponseEntity.ok(task.get());
