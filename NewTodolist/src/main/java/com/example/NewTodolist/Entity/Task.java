@@ -17,8 +17,18 @@ public class Task {
   @Column(name = "title", nullable = false)
   private String title;
 
+<<<<<<< HEAD
   @Column(name = "completed")
   private boolean completed;
+=======
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  private User user;
+
+    // Constructor, Getter และ Setter
+    public Task() {
+    }
+>>>>>>> parent of 89ea2c2 (Revert "add login pages")
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")

@@ -1,9 +1,17 @@
 package com.example.NewTodolist.Entity;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+=======
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+>>>>>>> parent of 89ea2c2 (Revert "add login pages")
 
 @Entity
 @Table(name = "user")  // กำหนดชื่อของตาราง
@@ -16,6 +24,7 @@ public class User {
   @Column(nullable = false, unique = true)
   private String username;
 
+<<<<<<< HEAD
   @Column(nullable = false)
   private String password;
 
@@ -30,6 +39,11 @@ public class User {
 
   // Getters and Setters
   // (รวม Getter และ Setter ของ Task ด้วย)
+=======
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Task> tasks = new ArrayList<>();
+
+>>>>>>> parent of 89ea2c2 (Revert "add login pages")
 
   public Long getId() {
     return id;
