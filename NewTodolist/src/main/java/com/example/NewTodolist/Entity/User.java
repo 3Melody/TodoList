@@ -1,5 +1,6 @@
 package com.example.NewTodolist.Entity;
 
+<<<<<<< HEAD
 import jakarta.persistence.*;
 <<<<<<< HEAD
 import java.util.ArrayList;
@@ -12,18 +13,22 @@ import java.util.List;
 
 
 >>>>>>> parent of 89ea2c2 (Revert "add login pages")
+=======
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+>>>>>>> parent of 775ae1b (DTO Task)
 
 @Entity
-@Table(name = "user")  // กำหนดชื่อของตาราง
 public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  @Column(nullable = false, unique = true)
   private String username;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   @Column(nullable = false)
   private String password;
@@ -45,6 +50,8 @@ public class User {
 
 >>>>>>> parent of 89ea2c2 (Revert "add login pages")
 
+=======
+>>>>>>> parent of 775ae1b (DTO Task)
   public Long getId() {
     return id;
   }
@@ -93,11 +100,10 @@ public class User {
     this.typeuser = typeuser;
   }
 
-  public List<Task> getTasks() {
-    return tasks;
-  }
+  private String password;
+  private String firstname;
+  private String lastname;
+  private String typeuser;
 
-  public void setTasks(List<Task> tasks) {
-    this.tasks = tasks;
-  }
+  // Getters and Setters
 }
