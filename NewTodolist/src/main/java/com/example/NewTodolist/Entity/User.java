@@ -1,17 +1,49 @@
 package com.example.NewTodolist.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+=======
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+>>>>>>> parent of 89ea2c2 (Revert "add login pages")
 
 @Entity
+@Table(name = "user")  // กำหนดชื่อของตาราง
 public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(nullable = false, unique = true)
   private String username;
+
+<<<<<<< HEAD
+  @Column(nullable = false)
+  private String password;
+
+  private String firstname;
+  private String lastname;
+  private String typeuser;
+
+  // ความสัมพันธ์กับ Task
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JsonManagedReference
+  private List<Task> tasks = new ArrayList<>();
+
+  // Getters and Setters
+  // (รวม Getter และ Setter ของ Task ด้วย)
+=======
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Task> tasks = new ArrayList<>();
+
+>>>>>>> parent of 89ea2c2 (Revert "add login pages")
 
   public Long getId() {
     return id;
@@ -61,10 +93,11 @@ public class User {
     this.typeuser = typeuser;
   }
 
-  private String password;
-  private String firstname;
-  private String lastname;
-  private String typeuser;
+  public List<Task> getTasks() {
+    return tasks;
+  }
 
-  // Getters and Setters
+  public void setTasks(List<Task> tasks) {
+    this.tasks = tasks;
+  }
 }
