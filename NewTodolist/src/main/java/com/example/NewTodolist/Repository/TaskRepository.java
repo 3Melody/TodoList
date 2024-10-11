@@ -2,7 +2,11 @@ package com.example.NewTodolist.Repository;
 
 import com.example.NewTodolist.Entity.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
 
+@Repository
 public interface TaskRepository extends JpaRepository<Task, Integer> {
-    // JpaRepository มี method ในการค้นหาตาม ID อยู่แล้ว
+  List<Task> findByUserId(Long userId);
 }
+

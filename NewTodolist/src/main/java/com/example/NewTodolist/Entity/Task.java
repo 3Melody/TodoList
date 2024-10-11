@@ -1,50 +1,67 @@
 package com.example.NewTodolist.Entity;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "task")
 public class Task {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
-    @Column(name = "title", nullable = false)  // ใส่ nullable = false เพื่อให้ title ต้องไม่เป็นค่าว่าง
-    private String title;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-    @Column(name = "completed")
-    private boolean completed;
+  @Column(name = "title", nullable = false)
+  private String title;
 
-    // Constructor, Getter และ Setter
-    public Task() {
-    }
+  @Column(name = "completed")
+  private boolean completed;
 
-    public Task(String title, boolean completed) {
-        this.title = title;
-        this.completed = completed;
-    }
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})  // ป้องกันการโหลดแบบ Lazy
+  private User user;
 
-    public int getId() {
-        return id;
-    }
+  // Constructor, Getter และ Setter
+  public Task() {}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public Task(String title, boolean completed) {
+    this.title = title;
+    this.completed = completed;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public boolean isCompleted() {
-        return completed;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public boolean isCompleted() {
+    return completed;
+  }
+
+  public void setCompleted(boolean completed) {
+    this.completed = completed;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
 }
